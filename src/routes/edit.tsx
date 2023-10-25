@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import useDebounce from '../hooks/useDebounce.hook'
 
 export default function Edit() {
+  const [jsonValue, setJsonValue] = useState<string>('')
+  const debouncedValue = useDebounce<string>(jsonValue, 2000)
+
+  useEffect(() => {
+    if (debouncedValue) {
+      console.log('ACAA')
+    }
+  }, [debouncedValue])
+
   const handleOnJsonEdit = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    console.log(event.target.value)
+    setJsonValue(event.target.value)
   }
 
   return (
