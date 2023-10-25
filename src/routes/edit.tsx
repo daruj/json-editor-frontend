@@ -2,12 +2,17 @@ import React, { useEffect, useState } from 'react'
 import useDebounce from '../hooks/useDebounce.hook'
 
 export default function Edit() {
-  const [jsonValue, setJsonValue] = useState<string>('')
-  const debouncedValue = useDebounce<string>(jsonValue, 2000)
+  const [isFirstRender, setIsFirstRender] = useState(true)
+  const [jsonValue, setJsonValue] = useState<string>('{}')
+  const debouncedValue = useDebounce<string>(jsonValue, 500)
 
   useEffect(() => {
-    if (debouncedValue) {
+    if (debouncedValue && !isFirstRender) {
       console.log('ACAA')
+    }
+
+    if (isFirstRender) {
+      setIsFirstRender(false)
     }
   }, [debouncedValue])
 
@@ -17,7 +22,7 @@ export default function Edit() {
 
   return (
     <div>
-      <textarea onChange={handleOnJsonEdit} />
+      <textarea onChange={handleOnJsonEdit} value={jsonValue} />
     </div>
   )
 }
