@@ -1,3 +1,13 @@
+import React from 'react'
+
 export default function Edit() {
-  return <div>Edit Page</div>
+  const handleOnJsonEdit = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    console.log(event.target.value)
+  }
+
+  return (
+    <div>
+      <textarea onChange={handleOnJsonEdit} />
+    </div>
+  )
 }
