@@ -1,8 +1,12 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { QueryClientProvider, QueryClient } from 'react-query'
 import Root from './routes/root'
 import ErrorPage from './error-page'
 import Edit from './routes/edit'
 import Preview from './routes/preview'
+
+// Create a client
+const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
@@ -23,5 +27,9 @@ const router = createBrowserRouter([
 ])
 
 export default function App() {
-  return <RouterProvider router={router} />
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  )
 }
