@@ -1,5 +1,5 @@
 import useWebSocket from 'react-use-websocket'
-import { WS_URL } from '../constants'
+import { WS_EVENTS, WS_URL } from '../constants'
 import { useQuery } from 'react-query'
 import { fetchJsonData } from '../api/json.api'
 import PreviewPage from '../pages/preview/preview.page'
@@ -15,7 +15,7 @@ function isJSONUpdateEvent(message: { data: string }) {
   try {
     const parsedMessage: WsData = JSON.parse(message.data)
 
-    if (parsedMessage.event !== 'JSON_UPDATED') {
+    if (parsedMessage.event !== WS_EVENTS.JSON_UPDATED) {
       return false
     }
 
