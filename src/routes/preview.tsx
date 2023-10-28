@@ -1,51 +1,11 @@
-import useWebSocket from 'react-use-websocket'
-import { WS_EVENTS, WS_URL } from '../constants'
-import { useQuery } from 'react-query'
-import { fetchJsonData } from '../api/json.api'
 import PreviewPage from '../pages/preview/preview.page'
 import LoadingSpinner from '../components/loading-spinner/loading-spinner'
 import ContentWrapper from '../components/content-wrapper/content-wrapper'
-
-interface WsData {
-  event: string
-  payload: string
-}
-
-function isJSONUpdateEvent(message: { data: string }) {
-  try {
-    const parsedMessage: WsData = JSON.parse(message.data)
-
-    if (parsedMessage.event !== WS_EVENTS.JSON_UPDATED) {
-      return false
-    }
-
-    return true
-  } catch (err) {
-    return false
-  }
-}
+import useGetJSON from '../hooks/useGetJSON.hook'
 
 export default function Preview() {
-  const { lastJsonMessage }: { lastJsonMessage: { payload: string } | null } =
-    useWebSocket(WS_URL, {
-      share: true,
-      filter: isJSONUpdateEvent,
-      retryOnError: true,
-      shouldReconnect: () => true,
-    })
-
-  const { data, isSuccess, isError, isLoading, refetch } = useQuery(
-    'jsonData',
-    fetchJsonData,
-    {
-      refetchOnWindowFocus: false,
-    }
-  )
-
-  const handleRefetch = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    event.preventDefault()
-    refetch()
-  }
+  const { isLoading, isError, handleRefetch, isSuccess, data, lastJsonMessage } =
+    useGetJSON()
 
   if (isLoading)
     return (
