@@ -20,7 +20,7 @@ export const updateJsonData = async (json: string): Promise<string> => {
       'Content-Type': 'application/json',
       // Add any other headers your API may require
     },
-    body: json,
+    body: JSON.stringify({ json }),
   })
 
   if (!response.ok) {

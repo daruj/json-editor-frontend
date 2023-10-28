@@ -1,4 +1,4 @@
-import JsonPreview from '../../components/json-preview/json-preview'
+import JSONWrapper from '../../components/json-wrapper/json-wrapper'
 import styles from './preview.page.module.scss'
 
 import React from 'react'
@@ -10,7 +10,7 @@ interface PreviewPageProps {
 const PreviewPage: React.FC<PreviewPageProps> = ({ jsonText }) => {
   return (
     <div className={styles['preview-page']}>
-      <JsonPreview jsonText={jsonText} />
+      <JSONWrapper jsonText={jsonText} />
     </div>
   )
 }

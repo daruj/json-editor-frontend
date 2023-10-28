@@ -23,15 +23,33 @@
 }
 
 .updated {
-  animation: outline 1s infinite;
+  $outline-color: red;
+  animation: outlineSuccess 1s infinite;
 }
 
-@keyframes outline {
+.error {
+  $outline-color: rgb(0, 213, 255);
+  animation: outlineError 1s infinite;
+}
+
+@keyframes outlineSuccess {
   0% {
     outline: 0px;
   }
   30% {
     outline: 3px solid rgb(0, 213, 255);
+  }
+  100% {
+    outline: 0px;
+  }
+}
+
+@keyframes outlineError {
+  0% {
+    outline: 0px;
+  }
+  30% {
+    outline: 3px solid red;
   }
   100% {
     outline: 0px;

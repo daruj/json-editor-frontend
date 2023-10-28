@@ -1,10 +1,10 @@
 import PreviewPage from '../pages/preview/preview.page'
 import LoadingSpinner from '../components/loading-spinner/loading-spinner'
 import ContentWrapper from '../components/content-wrapper/content-wrapper'
-import useGetJSON from '../hooks/useGetJSON.hook'
+import useGetAndUpdateJSON from '../hooks/useGetAndUpdateJSON.hook'
 
 export default function Preview() {
-  const { isLoading, isError, handleRefetch, data, lastJsonMessage } = useGetJSON()
+  const { isLoading, isError, handleRefetch, jsonText } = useGetAndUpdateJSON()
 
   if (isLoading) {
     return (
@@ -27,6 +27,5 @@ export default function Preview() {
     )
   }
 
-  const jsonText = lastJsonMessage !== null ? JSON.parse(lastJsonMessage.payload) : data
   return <PreviewPage jsonText={jsonText} />
 }
