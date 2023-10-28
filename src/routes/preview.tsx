@@ -4,17 +4,17 @@ import ContentWrapper from '../components/content-wrapper/content-wrapper'
 import useGetJSON from '../hooks/useGetJSON.hook'
 
 export default function Preview() {
-  const { isLoading, isError, handleRefetch, isSuccess, data, lastJsonMessage } =
-    useGetJSON()
+  const { isLoading, isError, handleRefetch, data, lastJsonMessage } = useGetJSON()
 
-  if (isLoading)
+  if (isLoading) {
     return (
       <ContentWrapper centered fullHeight>
         <LoadingSpinner />
       </ContentWrapper>
     )
+  }
 
-  if (isError)
+  if (isError) {
     return (
       <ContentWrapper centered fullHeight>
         <span>
@@ -25,11 +25,8 @@ export default function Preview() {
         </span>
       </ContentWrapper>
     )
-
-  if (isSuccess && data) {
-    const jsonText = lastJsonMessage !== null ? JSON.parse(lastJsonMessage.payload) : data
-    return <PreviewPage jsonText={jsonText} />
   }
 
-  return <PreviewPage jsonText='{}' />
+  const jsonText = lastJsonMessage !== null ? JSON.parse(lastJsonMessage.payload) : data
+  return <PreviewPage jsonText={jsonText} />
 }
