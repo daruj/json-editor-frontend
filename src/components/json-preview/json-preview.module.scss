@@ -1,0 +1,39 @@
+.json-preview {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 5px;
+  max-width: calc(100% - 40px);
+  width: 100%;
+  overflow: auto;
+  height: 100%;
+
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 16px;
+    height: 100%;
+    margin: 0;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+.updated {
+  animation: outline 1s infinite;
+}
+
+@keyframes outline {
+  0% {
+    outline: 0px;
+  }
+  30% {
+    outline: 3px solid rgb(0, 213, 255);
+  }
+  100% {
+    outline: 0px;
+  }
+}
