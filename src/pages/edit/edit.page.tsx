@@ -1,3 +1,4 @@
+import ContentWrapper from '../../components/content-wrapper/content-wrapper'
 import JSONWrapper from '../../components/json-wrapper/json-wrapper'
 import styles from './edit.page.module.scss'
 
@@ -11,7 +12,10 @@ interface EditPageProps {
 const EditPage: React.FC<EditPageProps> = ({ jsonText, onUpdateJsonText }) => {
   return (
     <div className={styles['edit-page']}>
-      <JSONWrapper jsonText={jsonText} onUpdateJsonText={onUpdateJsonText} />
+      <h1>Edit this JSON!</h1>
+      <ContentWrapper centered>
+        <JSONWrapper jsonText={jsonText} onUpdateJsonText={onUpdateJsonText} />
+      </ContentWrapper>
     </div>
   )
 }

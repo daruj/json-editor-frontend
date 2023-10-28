@@ -13,6 +13,23 @@ export const PreCode: React.FC<PreCodeProps> = ({
 }) => {
   const preRef = useRef<HTMLPreElement>(null)
 
+  // I made this so when pressing a Tab I insert 2 spaces
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLPreElement>) => {
+    if (e.key === 'Tab') {
+      e.preventDefault()
+      const selection = window.getSelection()
+      if (selection) {
+        const range = selection.getRangeAt(0)
+        const tabNode = document.createTextNode('  ')
+        range.insertNode(tabNode)
+        range.setStartAfter(tabNode)
+        range.setEndAfter(tabNode)
+        selection.removeAllRanges()
+        selection.addRange(range)
+      }
+    }
+  }
+
   const onChange = () => {
     if (preRef.current && handleJsonTextChange) {
       const newJsonText = preRef.current.textContent || ''
@@ -21,9 +38,11 @@ export const PreCode: React.FC<PreCodeProps> = ({
   }
 
   return (
+    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
     <pre
       contentEditable={canEdit}
       ref={preRef}
+      onKeyDown={handleKeyDown}
       onInput={onChange}
       suppressContentEditableWarning={canEdit}
     >
