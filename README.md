@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# JSON Editor Frontend
+
+This is the frontend for a coding challenge project designed to store and update JSON data.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
