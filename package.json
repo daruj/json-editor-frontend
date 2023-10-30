@@ -1,6 +1,6 @@
 {
   "name": "json-editor-frontend",
-  "description": "This is the frontend for a coding challenge that is supposed to store and allow to update json data",
+  "description": "This is the frontend for a coding challenge that is supposed to store and allow to update json data.",
   "version": "0.1.0",
   "private": true,
   "type": "module",
