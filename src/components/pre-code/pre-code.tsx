@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 interface PreCodeProps {
   canEdit: boolean
@@ -11,6 +11,14 @@ export const PreCode: React.FC<PreCodeProps> = ({
   handleJsonTextChange,
   jsonText,
 }) => {
+  const [json, setJSON] = useState(jsonText)
+
+  useEffect(() => {
+    if (!canEdit) {
+      setJSON(jsonText)
+    }
+  }, [jsonText, canEdit])
+
   const preRef = useRef<HTMLPreElement>(null)
 
   // I made this so when pressing a Tab I insert 2 spaces
@@ -46,7 +54,7 @@ export const PreCode: React.FC<PreCodeProps> = ({
       onInput={onChange}
       suppressContentEditableWarning={canEdit}
     >
-      {JSON.stringify(jsonText, null, 2)}
+      {JSON.stringify(json, null, 2)}
     </pre>
   )
 }
