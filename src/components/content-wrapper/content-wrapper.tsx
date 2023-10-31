@@ -6,21 +6,30 @@ interface ContentWrapperProps {
   children: React.ReactElement
   centered?: boolean
   fullHeight?: boolean
+  fullHeightVP?: boolean
+  className?: string
 }
 
 const ContentWrapper: React.FC<ContentWrapperProps> = ({
   children,
   centered,
   fullHeight,
+  fullHeightVP,
+  className,
 }) => {
   return (
     <div
-      className={clsx(styles['content-wrapper'], {
-        [styles.centered]: centered,
-        [styles.fullHeight]: fullHeight,
-      })}
+      className={clsx(
+        styles.wrapper,
+        {
+          [styles.centered]: centered,
+          [styles.fullHeight]: fullHeight,
+          [styles.fullHeightVP]: fullHeightVP,
+        },
+        className
+      )}
     >
-      {children}
+      <div className={styles.content}>{children}</div>
     </div>
   )
 }

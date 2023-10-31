@@ -35,7 +35,7 @@ export default function useJSONPreview({
           onUpdate(debouncedValue)
         }
       } catch (err) {
-        executeAnimation(1000, setAnimateError)
+        executeAnimation(2000, setAnimateError)
       }
     }
   }, [debouncedValue, editMode])
@@ -61,7 +61,7 @@ export default function useJSONPreview({
         setJsonValue(newJsonMessage)
       }
 
-      const timer = executeAnimation(1000, setAnimateSuccess)
+      const timer = executeAnimation(2000, setAnimateSuccess)
 
       return () => {
         clearTimeout(timer)

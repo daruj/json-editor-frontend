@@ -1,13 +1,12 @@
 .json-preview {
   background-color: #fff;
   border: 1px solid #ccc;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgb(244 239 239);
   padding: 20px;
   border-radius: 5px;
   max-width: calc(100% - 40px);
   width: 100%;
   overflow: auto;
-  height: 100%;
 
   pre {
     white-space: pre-wrap;
@@ -23,35 +22,33 @@
 }
 
 .updated {
-  $outline-color: red;
-  animation: outlineSuccess 1s infinite;
+  animation: shadowSuccess 2s infinite;
 }
 
 .error {
-  $outline-color: rgb(0, 213, 255);
-  animation: outlineError 1s infinite;
+  animation: shadowError 2s infinite;
 }
 
-@keyframes outlineSuccess {
+@keyframes shadowSuccess {
   0% {
-    outline: 0px;
+    box-shadow: 0 0 10px rgb(244 239 239);
   }
   30% {
-    outline: 3px solid rgb(0, 213, 255);
+    box-shadow: 0 0 20px rgb(0, 255, 64);
   }
   100% {
-    outline: 0px;
+    box-shadow: 0 0 10px rgb(244 239 239);
   }
 }
 
-@keyframes outlineError {
+@keyframes shadowError {
   0% {
-    outline: 0px;
+    box-shadow: 0 0 10px rgb(244 239 239);
   }
   30% {
-    outline: 3px solid red;
+    box-shadow: 0 0 20px red;
   }
   100% {
-    outline: 0px;
+    box-shadow: 0 0 10px rgb(244 239 239);
   }
 }

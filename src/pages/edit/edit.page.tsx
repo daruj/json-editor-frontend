@@ -12,8 +12,7 @@ interface EditPageProps {
 const EditPage: React.FC<EditPageProps> = ({ jsonText, onUpdateJsonText }) => {
   return (
     <div className={styles['edit-page']}>
-      <h1>Edit this JSON!</h1>
-      <ContentWrapper centered>
+      <ContentWrapper centered fullHeight className={styles.flex}>
         <JSONWrapper jsonText={jsonText} onUpdateJsonText={onUpdateJsonText} />
       </ContentWrapper>
     </div>

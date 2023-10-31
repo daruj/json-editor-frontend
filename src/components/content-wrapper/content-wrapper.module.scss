@@ -1,6 +1,11 @@
-.content-wrapper {
+.wrapper {
   width: 100%;
   height: 100%;
+}
+
+.content {
+  width: 100%;
+  max-width: 1024px;
 }
 
 .centered {
@@ -10,5 +15,15 @@
 }
 
 .fullHeight {
+  height: 100%;
+  .content {
+    height: 100%;
+  }
+}
+
+.fullHeightVP {
   height: 100vh;
+  .content {
+    height: 100%;
+  }
 }

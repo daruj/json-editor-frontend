@@ -1,7 +1,13 @@
 .preview-page {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  height: 100vh;
+  padding: 20px;
+  height: calc(100vh - 200px);
+}
+
+.flex {
+  & > div:nth-of-type(1) {
+    display: flex;
+  }
 }

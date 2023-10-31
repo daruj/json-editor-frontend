@@ -16,7 +16,7 @@ export default function Preview() {
 
   if (isError) {
     return (
-      <ContentWrapper centered fullHeight>
+      <ContentWrapper centered fullHeightVP>
         <span>
           We were not able to retrieve the json, please{' '}
           <a href='/#' onClick={handleRefetch}>
